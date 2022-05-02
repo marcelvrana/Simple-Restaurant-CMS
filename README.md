@@ -44,6 +44,22 @@ should be ready to go.
 via a web browser. See [security warning](https://nette.org/security-warning).**
 
 
+Database
+--------
+Import database from `database` directory.
+For connect to db make file in `config/local.neon`
+
+Structure of file is
+
+    parameters:
+
+
+    database:
+    dsn: 'mysql:host=127.0.0.1;dbname=makawacms'
+    user: root
+    password: root
+
+
 Admin
 -----
 
