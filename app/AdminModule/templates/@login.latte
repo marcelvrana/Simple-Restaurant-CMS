@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="noindex,nofollow" />
+    <!-- Primary Meta Tags -->
+    <title>CMS | MAKAWA web development</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="CMS | MAKAWA web development">
+    <meta name="author" content="makawa.sk / marcelvrana.sk - web developer">
+    <meta name="description" content="">
+
+    <link type="text/css" href="{$basePath}/dashboard/dist/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<main>
+    <div class="container position-relative" n:snippet="flashmessages">
+        <div role="alert" n:foreach="$flashes as $flash" class="alert position-absolute w-100 alert-dismissible fade show alert-{$flash->type} ">{$flash->message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <!-- Section -->
+    <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+        <div class="container">
+            {include content}
+        </div>
+    </section>
+</main>
+
+
+<script src="{$basePath}/dashboard/dist/bundle.js"></script>
+{block scripts}
+{/block}
+</body>
+
+
+</html>

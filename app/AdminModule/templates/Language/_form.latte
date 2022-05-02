@@ -1,0 +1,41 @@
+{form languageForm}
+    <div class="card">
+        <div class="card-header">
+            New language
+        </div>
+        <div class="card-body">
+
+            <div class="mb-3 {if $form['name']->isRequired()}required{/if}">
+                {label name}
+                {input name}
+                <div n:ifcontent class="form-text">{_$form['name']->getOption('description')}</div>
+                <div n:ifcontent class="invalid-feedback">{inputError name}</div>
+            </div>
+
+            <div class="mb-3 {if $form['webname']->isRequired()}required{/if}">
+                {label webname}
+                {input webname}
+                <div n:ifcontent class="form-text">{_$form['webname']->getOption('description')}</div>
+                <div n:ifcontent class="invalid-feedback">{inputError webname}</div>
+            </div>
+
+            <div class="mb-3 {if $form['shortcode']->isRequired()}required{/if}">
+                {label shortcode}
+                {input shortcode}
+                <div n:ifcontent class="form-text">{_$form['shortcode']->getOption('description')}</div>
+                <div n:ifcontent class="invalid-feedback">{inputError shortcode}</div>
+            </div>
+
+            <div class="mb-3 {if $form['is_active']->isRequired()}required{/if}">
+                {label is_active}
+                {input is_active}
+                <div n:ifcontent class="form-text">{_$form['is_active']->getOption('description')}</div>
+                <div n:ifcontent class="invalid-feedback">{inputError is_active}</div>
+            </div>
+
+            <div class="mb-3">
+                {input submit}
+            </div>
+        </div>
+    </div>
+{/form}

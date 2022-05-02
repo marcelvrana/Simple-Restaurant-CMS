@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="noindex,nofollow"/>
+    <!-- Primary Meta Tags -->
+    <title>{ifset headTitle}{include headTitle|stripHtml} | {/ifset} MAKAWA CMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="CMS | MAKAWA web development">
+    <meta name="author" content="makawa.sk / marcelvrana.sk - web developer">
+    <link href="{$basePath}/dashboard/dist/main.css" rel="stylesheet">
+    <link rel="icon" href="{$basePath}/favicon.ico?v=2" type="image/x-icon" />
+</head>
+
+<body>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="https://makawa.sk">MAKAWA CMS</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" n:href="Sign:out">Log Out</a>
+        </li>
+    </ul>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+
+
+                    <li class="nav-item">
+                        <a n:href="Banner:default" class="nav-link {if $presenter->isLinkCurrent('Banner:*')}active{/if}">Banner</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="News:default" class="nav-link {if $presenter->isLinkCurrent('News:*')}active{/if}">News</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Gallery:default" class="nav-link {if $presenter->isLinkCurrent('Gallery:*')}active{/if}">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="SpaceOffer:default" class="nav-link {if $presenter->isLinkCurrent('SpaceOffer:*')}active{/if}">Space Offer</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Alacarte:default" class="nav-link {if $presenter->isLinkCurrent('Alacarte:*')}active{/if}">À la carte</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Allergen:default" class="nav-link {if $presenter->isLinkCurrent('Allergen:*')}active{/if}">Alergens</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Settings:default" class="nav-link {if $presenter->isLinkCurrent('Settings:*')}active{/if}">Settings</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Language:default" class="nav-link {if $presenter->isLinkCurrent('Language:*')}active{/if}">Languages</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Translation:default" class="nav-link {if $presenter->isLinkCurrent('Translation:*')}active{/if}">Translate</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a n:href="Seosettings:default" class="nav-link {if $presenter->isLinkCurrent('Seosettings:*')}active{/if}">SEO Settings</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1>{ifset title}{include title}{/ifset}</h1>
+
+                {ifset buttonContent}{include buttonContent}{/ifset}
+            </div>
+
+            <div class="container position-relative">
+                {snippet flashmessages}
+                    <div role="alert" n:foreach="$flashes as $flash"
+                         class="alert w-100 alert-dismissible fade show {$flash->type} ">{$flash->message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {/snippet}
+            </div>
+
+            {include content}
+
+
+        </main>
+    </div>
+</div>
+
+
+
+
+<script>
+	window.info = {};
+    window.info.basePath = {$basePath};
+    window.info.baseUrl = {$baseUrl};
+</script>
+
+<script src="{$basePath}/dashboard/dist/bundle.js"></script>
+{block scripts}
+{/block}
+
+</body>
+
+</html>

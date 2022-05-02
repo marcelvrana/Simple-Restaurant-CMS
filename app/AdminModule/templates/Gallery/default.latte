@@ -1,0 +1,62 @@
+{block headTitle}Galleries{/block}
+{block title}Galerries{/block}
+
+{block buttonContent}
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a n:href="add" class="btn btn-sm btn-secondary">Add</a>
+    </div>
+{/block}
+
+{block content}
+    <div class="table-responsive">
+        {snippet tablesnippet}
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody id="sortable" data-url="{link changeOrder!}" data-repository="gallery">
+                <tr n:foreach="$items as $item" class="item" data-id="{$item->id}">
+                    <td class="handle" title="Change order" data-bs-toggle="tooltip" data-bs-placement="top"><i
+                                class="bi bi-arrow-down-up"></i></td>
+                    <td>
+                        {$item|dictionaryData:'gallery':'name'}
+
+                    </td>
+
+                    <td align="right">
+                        <div class="btn-group">
+                            {if $item->gallerytype == 'video'}
+                                <a n:href="galleryVideos $item->id" class="btn btn-sm btn-info" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top"
+                                                                    title="Videos in gallery">{$item->related('galleryvideo')->count('*')}
+                                    <i class="bi bi-camera-video"></i></a>
+                            {else}
+                                <a n:href="galleryPhotos $item->id" class="btn btn-sm btn-info" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top"
+                                                                    title="Photos in gallery">{$item->related('galleryphoto')->count('*')}
+                                    <i class="bi bi-image"></i></a>
+                            {/if}
+                            <a n:href="edit $item->id" class="btn btn-sm btn-primary" data-bs-toggle="tooltip"
+                                                       data-bs-placement="top" title="Edit"><i
+                                        class="bi bi-tools"></i></a>
+                            <button data-confirm="swal"
+                                    data-title="Delete {$item|dictionaryData:'gallery':'name'}?"
+                                    data-text="The change is irreversible!" data-type="warning"
+                                    data-url="{link delete!, $item->id}" class="btn btn-sm btn-danger ajax"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i
+                                        class="bi bi-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        {/snippet}
+    </div>
+{/block}

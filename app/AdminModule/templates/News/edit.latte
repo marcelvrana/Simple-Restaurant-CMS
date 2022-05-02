@@ -1,0 +1,8 @@
+{block headTitle}Edit new - "{$item|dictionaryData:'news':'name'}"{/block}
+{block title}Edit new - <strong>"{$item|dictionaryData:'news':'name'}"</strong>{/block}
+
+{block content}
+    {snippet news}
+        {control newsForm}
+    {/snippet}
+{/block}

@@ -1,0 +1,44 @@
+{block headTitle}Add photos - {$row|dictionaryData:'gallery':'name'}{/block}
+{block title}App photos - {$row|dictionaryData:'gallery':'name'}{/block}
+
+
+
+{block content}
+
+    <div class="dropzone" id="dropzone" data-url="{link uploadPhoto!}"></div>
+
+    {snippet photos}
+        <div class="photos my-4">
+            <div class="row" id="sort" data-url="{link sortPhotos!}">
+                {foreach $items as $item}
+                    <div class="col-6 col-sm-2" data-id="{$item->id}">
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <img src="{$basePath}/{$item->img_thumb}" class="img-fluid">
+                            </div>
+
+                            <div class="card-footer">
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <a class="btn btn-sm btn-success sort-handle"><i
+                                                    class="bi bi-arrow-left-right"></i></a>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <a data-confirm="modal" data-title="Delete?" data-text="Delete item?"
+                                           data-type="warning" data-url="{link deletePhoto! $item->id}"
+                                           class="btn btn-danger btn-sm float-end ajax" href="#" title="delete"
+                                           data-bs-toggle="tooltip" data-bs-placement="top"><i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+        </div>
+    {/snippet}
+{/block}
+

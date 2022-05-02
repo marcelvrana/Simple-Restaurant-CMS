@@ -1,0 +1,17 @@
+@import 'dashboard';
+@import 'bootstrap.min.css';
+@import 'datepicker.min';
+@import 'jquery.timepicker.min';
+@import 'select2.min';
+
+#ajax-loader {
+  background: #b9b9b9 url(../images/spinner.gif) no-repeat center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  display: none;
+}

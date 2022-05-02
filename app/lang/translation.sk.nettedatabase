@@ -1,0 +1,4 @@
+table: "translation" # if you specify table key, "messages" from file name will be ignored
+id: "placeholder" # id column name, default is "id"
+locale: "locale" # locale column name, default is "locale"
+message: "translation" # message column name, default is "message"

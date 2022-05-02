@@ -1,0 +1,63 @@
+{block headTitle}Category {$category|dictionaryData:'alacartecategory':'name'}{/block}
+{block title}Category {$category|dictionaryData:'alacartecategory':'name'}{/block}
+
+{block buttonContent}
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a n:href="addItem , id: null, category_id: $id" class="btn btn-sm btn-secondary">Add</a>
+    </div>
+{/block}
+
+{block content}
+
+    <div class="table-responsive">
+        {snippet tablesnippet}
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th width="100">Order</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Is active?</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody id="sortable" data-url="{link changeOrder!}" data-repository="alacarteitem">
+                <tr n:foreach="$items as $item" class="item" data-id="{$item->id}">
+                    <td class="handle"><i class="bi bi-arrow-down-up"></i></td>
+                    <td>
+                        {$item->amount} {if $item->amount_side_dish} / {$item->amount_side_dish}{/if} -
+                        {$item|dictionaryData:'alacarteitem':'name'}
+                    </td>
+                    <td>
+                        {$item->price|Number:2} &euro;
+                    </td>
+
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input active ajax" data-url="{link setActive!, $item->id, 'alacarteitem'}" type="checkbox" id="active_{$item->id}" data-item_id="{$item->id}" n:attr="checked: $item->is_active ? true : false">
+                            <label class="form-check-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Status" for="active_{$item->id}">{if $item->is_active}Active{else}Deactivated{/if}</label>
+                        </div>
+                    </td>
+
+
+                    <td align="right">
+                        <div class="btn-group">
+                            <a class="btn btn-sm btn-info" n:href="itemvariant $item->id, category_id: null" data-bs-toggle="tooltip" data-bs-placement="top" title="Variants">{$item->related('alacarteitemvariant')->count('*')} <i class="bi bi-list"></i></a>
+                            <a n:href="editItem $item->id" class="btn btn-sm btn-primary " title="Edit"><i class="bi bi-tools"></i></a>
+                            <button data-confirm="swal" data-title="Delete {$item|dictionaryData:'alacarteitem':'name'}?" data-text="The change is irreversible!" data-type="warning" data-url="{link deleteItem!, $item->id}" class="btn btn-sm btn-danger ajax" title="Delete"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        {/snippet}
+    </div>
+
+{/block}
+
+{block scripts}
+
+{/block}

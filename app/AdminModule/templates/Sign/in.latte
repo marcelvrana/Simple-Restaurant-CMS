@@ -1,0 +1,51 @@
+{block content}
+    <p class="text-center"><a n:href=":Front:Default:default" class="text-gray-700"><i class="fas fa-angle-left me-2"></i> Back to homepage</a></p>
+    <div class="row justify-content-center form-bg-image" data-background-lg="{$basePath}/cms/volt/html&css/assets/img/illustrations/signin.svg">
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
+                <div class="text-center text-md-center mb-4 mt-md-0">
+                    <h1 class="mb-0 h3">Login to MAKAWA CMS</h1>
+                </div>
+                {snippet login}
+                    {form signInForm, class => 'mt-4'}
+                    <!-- Form -->
+                    <div class="form-group mb-4">
+                        {label login}
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+                            <input n:name="login" class="form-control {if $form['login']->hasErrors()}is-invalid{elseif $form->isSubmitted()}is-valid{/if}">
+                            <div n:ifcontent class="invalid-feedback">{inputError login}</div>
+                        </div>
+                    </div>
+                    <!-- End of Form -->
+                    <div class="form-group">
+                        <!-- Form -->
+                        <div class="form-group mb-4">
+                            {label password}
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon2"><i class="bi bi-key-fill"></i></span>
+                                <input n:name="password" class="form-control {if $form['password']->hasErrors()}is-invalid{elseif $form->isSubmitted()}is-valid{/if}">
+                                <div n:ifcontent class="invalid-feedback">{inputError password}</div>
+                            </div>
+                        </div>
+                        <!-- End of Form -->
+                        <div class="d-flex justify-content-between align-items-top mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="remember">
+                                <label class="form-check-label mb-0" for="remember">
+                                    Remember me
+                                </label>
+                            </div>
+{*                            TODO - dorobit zabudnute heslo ETAPA 2*}
+{*                            <div><a href="./forgot-password.html" class="small text-right">Lost password?</a></div>*}
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-dark">Login</button>
+                    </div>
+                {/form}
+            {/snippet}
+            </div>
+        </div>
+    </div>
+{/block}

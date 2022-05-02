@@ -1,0 +1,70 @@
+{block headTitle}Languages{/block}
+{block title}Languages{/block}
+
+{block buttonContent}
+    <div class="btn-toolbar mb-2 mb-md-0">
+            <a n:href="add" class="btn btn-sm btn-secondary">Add</a>
+    </div>
+{/block}
+
+{block content}
+
+    <div class="table-responsive">
+        {snippet tablesnippet}
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>Order</th>
+                <th>Name</th>
+                <th>Name on website</th>
+                <th>Shortcode</th>
+                <th>Is active?</th>
+                <th>Is defaykt?</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody id="sortable" data-url="{link changeOrder!}" data-repository="language">
+            <tr n:foreach="$items as $item" class="item" data-id="{$item->id}">
+                <td class="handle" title="Zmena poradia" data-bs-toggle="tooltip" data-bs-placement="top"><i class="bi bi-arrow-down-up"></i></td>
+                <td>
+                    {$item->name}
+                </td>
+                <td>
+                    {$item->webname}
+                </td>
+                <td>
+                    {$item->shortcode}
+                </td>
+                <td>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input active ajax" data-url="{link setActive!, $item->id}" type="checkbox" id="active_{$item->id}" data-item_id="{$item->id}" n:attr="checked: $item->is_active ? true : false">
+                        <label class="form-check-label" data-bs-toggle="tooltip" data-bs-placement="top" title="Change language status" for="active_{$item->id}">{if $item->is_active}Active{else}Deactivated{/if}</label>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input default ajax" {if $item->is_default} disabled {/if} data-url="{link setDefault!, $item->id}" type="checkbox" id="default_{$item->id}" data-item_id="{$item->id}" n:attr="checked: $item->is_default ? true : false">
+                        <label class="form-check-label" for="default_{$item->id}">{if $item->is_default}Default{/if}</label>
+                    </div>
+                </td>
+                <td align="right">
+                    <div class="btn-group">
+                        <a n:href="edit $item->id" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="bi bi-tools"></i></a>
+                        <button data-confirm="swal" data-title="Delete {$item->name}?" data-text="The change is irreversible!" data-type="warning" data-url="{link delete!, $item->id}" class="btn btn-sm btn-danger ajax" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="bi bi-trash"></i></button>
+                    </div>
+                </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+        {/snippet}
+    </div>
+
+{/block}
+
+{block scripts}
+
+{/block}

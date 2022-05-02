@@ -1,0 +1,8 @@
+{block headTitle}Edit "{$item|dictionaryData:'gallery':'name'}"{/block}
+{block title}Edit <strong>"{$item|dictionaryData:'gallery':'name'}"</strong>{/block}
+{block content}
+    {snippet news}
+{*        {include '_form.latte'}*}
+        {control galleryForm}
+    {/snippet}
+{/block}
