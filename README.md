@@ -42,3 +42,16 @@ should be ready to go.
 
 **It is CRITICAL that whole `app/`, `config/`, `log/` and `temp/` directories are not accessible directly
 via a web browser. See [security warning](https://nette.org/security-warning).**
+
+
+Admin
+-----
+
+If you want show admin just go to
+
+    http://localhost:8000/admin
+
+Login and password is
+
+    Login: administrator
+    Password: admin1234
